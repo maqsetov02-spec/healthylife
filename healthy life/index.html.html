@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEALTHY LIFE | Design Your Personal Fitness Programme</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        nature: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            950: '#052e16',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f8faf9;
+            color: #0f172a;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(5, 46, 22, 0.92) 0%, rgba(20, 83, 45, 0.84) 55%, rgba(21, 128, 61, 0.76) 100%);
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 22px 35px -12px rgba(22, 163, 74, 0.18), 0 8px 16px -6px rgba(0, 0, 0, 0.06);
+        }
+        .img-zoom {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .group:hover .img-zoom {
+            transform: scale(1.06);
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0fdf4;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #16a34a;
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-nature-600 selection:text-white">
+
+    <!-- REUSABLE SVG DEFINITIONS FOR THE EXACT "HEALTHY LIFE" LOGO -->
+    <svg width="0" height="0" class="hidden" aria-hidden="true">
+        <defs>
+            <linearGradient id="hl-dark-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#052e16" />
+                <stop offset="50%" stop-color="#064e2c" />
+                <stop offset="100%" stop-color="#0d6e3c" />
+            </linearGradient>
+            <linearGradient id="hl-lime-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#168039" />
+                <stop offset="50%" stop-color="#57b819" />
+                <stop offset="100%" stop-color="#8ce027" />
+            </linearGradient>
+            <linearGradient id="hl-leaf-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#76d31d" />
+                <stop offset="55%" stop-color="#299438" />
+                <stop offset="100%" stop-color="#064e2c" />
+            </linearGradient>
+
+            <!-- Emblem Only (Circle + Leaf + Active Human Figure) -->
+            <g id="healthy-life-emblem">
+                <path d="M 105 24 A 78 78 0 1 0 92 178 A 72 72 0 1 1 112 30 Z" fill="url(#hl-dark-grad)" />
+                <path d="M 122 25 A 78 78 0 0 1 102 179 A 73 73 0 0 0 128 32 Z" fill="url(#hl-lime-grad)" />
+                <path d="M 92 168 C 52 158 38 112 58 66 C 78 86 108 112 96 168 Z" fill="url(#hl-leaf-grad)" />
+                <path d="M 96 168 C 106 122 86 92 58 66 C 88 80 116 114 102 166 Z" fill="#064e2c" opacity="0.9" />
+                <path d="M 93 166 Q 82 122 65 82" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" fill="none" />
+                <path d="M 81 128 L 69 120 M 76 110 L 66 103 M 85 143 L 72 137" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" fill="none" />
+                <path d="M 103 168 C 118 134 104 95 72 52 C 95 72 114 86 138 40 C 122 88 132 132 103 168 Z" fill="url(#hl-dark-grad)" />
+                <path d="M 116 146 C 125 110 136 84 148 34 C 156 68 144 108 118 138 Z" fill="url(#hl-lime-grad)" />
+                <path d="M 123 125 C 138 102 148 82 153 56 C 155 82 142 108 123 125 Z" fill="#8ce027" />
+                <circle cx="104" cy="56" r="11.5" fill="#0d6e3c" />
+            </g>
+
+            <!-- Full Horizontal Card Logo (Emblem + HEALTHY LIFE + YOUR HEALTH • YOUR POWER • YOUR FUTURE) -->
+            <g id="healthy-life-full-logo">
+                <g transform="translate(150, 4)">
+                    <use href="#healthy-life-emblem"></use>
+                </g>
+                <text x="250" y="232" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="44" letter-spacing="1.5">
+                    <tspan fill="#064e2c">HEALTHY </tspan>
+                    <tspan fill="#57b819">LIFE</tspan>
+                </text>
+                <path d="M 122 219 Q 134 206 146 212 Q 136 223 122 219 Z" fill="#57b819" />
+                <line x1="28" y1="262" x2="92" y2="262" stroke="#57b819" stroke-width="2" stroke-linecap="round" />
+                <line x1="408" y1="262" x2="472" y2="262" stroke="#064e2c" stroke-width="2" stroke-linecap="round" />
+                <text x="250" y="267" text-anchor="middle" font-family="'Inter', sans-serif" font-weight="700" font-size="13" fill="#064e2c" letter-spacing="2.4">
+                    YOUR HEALTH  🌿  YOUR POWER  🌿  YOUR FUTURE
+                </text>
+            </g>
+        </defs>
+    </svg>
+
+    <!-- STICKY NAVIGATION BAR -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-emerald-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-2xl bg-white border border-emerald-200 flex items-center justify-center shadow-sm group-hover:scale-105 transition p-1">
+                    <svg viewBox="0 0 200 200" class="w-10 h-10">
+                        <use href="#healthy-life-emblem"></use>
+                    </svg>
+                </div>
+                <div>
+                    <div class="font-display font-black text-xl tracking-tight leading-none">
+                        <span class="text-[#064e2c]">HEALTHY</span> <span class="text-[#57b819]">LIFE</span>
+                    </div>
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-nature-700 block mt-0.5" data-i18n="navSubtitle">
+                        YOUR HEALTH • YOUR POWER • YOUR FUTURE
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden xl:flex items-center gap-1 text-sm font-semibold text-slate-700">
+                <a href="#step1" class="px-3.5 py-2 rounded-xl hover:bg-nature-50 hover:text-nature-700 transition" data-i18n="navStep1">1. Research</a>
+                <a href="#step2" class="px-3.5 py-2 rounded-xl hover:bg-nature-50 hover:text-nature-700 transition" data-i18n="navStep2">2. 4-Week Plan</a>
+                <a href="#step3" class="px-3.5 py-2 rounded-xl hover:bg-nature-50 hover:text-nature-700 transition" data-i18n="navStep3">3. 10 Advice</a>
+                <a href="#step4" class="px-3.5 py-2 rounded-xl hover:bg-nature-50 hover:text-nature-700 transition" data-i18n="navStep4">4. Campaign</a>
+                <a href="#step5" class="px-3.5 py-2 rounded-xl bg-nature-100 text-nature-800 hover:bg-nature-200 font-extrabold transition flex items-center gap-1.5">
+                    <i data-lucide="award" class="w-4 h-4 text-nature-700"></i>
+                    <span data-i18n="navStep5">5. Team & Wordwall</span>
+                </a>
+            </nav>
+
+            <!-- Language Switcher & Mobile Menu Button -->
+            <div class="flex items-center gap-3">
+                <div class="inline-flex p-1 rounded-2xl bg-slate-100 border border-slate-200 shadow-inner">
+                    <button id="btn-uz" onclick="setLanguage('uz')" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all">
+                        <span>🇺🇿</span> O'ZBEK
+                    </button>
+                    <button id="btn-en" onclick="setLanguage('en')" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all">
+                        <span>🇬🇧</span> ENGLISH
+                    </button>
+                </div>
+
+                <button onclick="toggleMobileMenu()" class="xl:hidden p-2.5 rounded-xl bg-nature-50 text-nature-800 hover:bg-nature-100 transition" aria-label="Menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden xl:hidden bg-white border-b border-emerald-100 px-4 pt-2 pb-5 space-y-2 shadow-xl">
+            <a href="#step1" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl font-semibold text-slate-700 hover:bg-nature-50 hover:text-nature-700" data-i18n="navStep1">1. Research</a>
+            <a href="#step2" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl font-semibold text-slate-700 hover:bg-nature-50 hover:text-nature-700" data-i18n="navStep2">2. 4-Week Plan</a>
+            <a href="#step3" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl font-semibold text-slate-700 hover:bg-nature-50 hover:text-nature-700" data-i18n="navStep3">3. 10 Advice</a>
+            <a href="#step4" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl font-semibold text-slate-700 hover:bg-nature-50 hover:text-nature-700" data-i18n="navStep4">4. Campaign</a>
+            <a href="#step5" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl font-extrabold bg-nature-50 text-nature-800 hover:bg-nature-100" data-i18n="navStep5">5. Team & Wordwall</a>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         HERO SECTION (BOSH SAHIFA - RESTORED & COMPLETE)
+         ========================================== -->
+    <section id="hero" class="relative pt-28 pb-20 lg:pt-36 lg:pb-24 overflow-hidden">
+        <!-- High-res Nature Fitness Background Image with Fallback -->
+        <div class="absolute inset-0 -z-20">
+            <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=2000&q=85" 
+                 alt="Teenagers Fitness in Nature" 
+                 onerror="handleLogoFallback(this)"
+                 class="w-full h-full object-cover object-center">
+        </div>
+        <div class="absolute inset-0 -z-10 hero-gradient"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                <!-- Left Column: Title, Exact Objective Box, CTA & Stats -->
+                <div class="lg:col-span-7 text-white space-y-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-emerald-100 text-xs sm:text-sm font-bold tracking-wide">
+                        <span class="w-2.5 h-2.5 rounded-full bg-nature-400 animate-pulse"></span>
+                        <span data-i18n="heroBadge">GURUH ISHI • MAQSETOV, MURATBAEV, SHU'KIRBAEVA, ORALBAEVA</span>
+                    </div>
+
+                    <h1 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl leading-tight tracking-tight" data-i18n="heroTitle">
+                        Sog‘lom Turmush Tarzi — Shaxsiy Fitnes Dasturi
+                    </h1>
+
+                    <!-- OBJECTIVE / OUR GOAL BOX WITH EXACT REQUESTED TEXT -->
+                    <div class="p-6 sm:p-7 rounded-3xl bg-white/15 backdrop-blur-md border-2 border-nature-300/50 space-y-2.5 shadow-2xl">
+                        <div class="flex items-center gap-2 text-nature-300 font-extrabold text-xs uppercase tracking-widest">
+                            <i data-lucide="sparkles" class="w-4 h-4"></i>
+                            <span data-i18n="heroGoalLabel">BIZNING MAQSADIMIZ / OUR GOAL</span>
+                        </div>
+                        <p class="text-white text-base sm:text-lg leading-relaxed font-semibold" data-i18n="heroObjective">
+                            Bizning maqsadimiz — o‘smirlarga sog‘lom va baxtli hayot kechirishga yordam berish. Biz faol bo‘lish, to‘g‘ri ovqatlanish, yaxshiroq uxlash va tabiat qo‘ynida vaqt o‘tkazishning oddiy usullarini ulashamiz. Har kuni qilinadigan kichik qadamlar katta o‘zgarishlarga olib kelishi mumkin!
+                        </p>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap items-center gap-4 pt-1">
+                        <a href="#step1" class="px-7 py-4 rounded-2xl bg-nature-500 hover:bg-nature-400 text-slate-950 font-extrabold text-sm sm:text-base shadow-xl shadow-nature-500/30 transition transform hover:-translate-y-0.5 flex items-center gap-2">
+                            <span data-i18n="heroBtnStart">Barcha Bosqichlarni Ko'rish</span>
+                            <i data-lucide="arrow-down-right" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://wordwall.net/ru/resource/121298095?wwmethod=link" target="_blank" rel="noopener noreferrer" class="px-6 py-4 rounded-2xl bg-white/15 hover:bg-white/25 text-white border border-white/30 backdrop-blur-md font-bold text-sm sm:text-base transition flex items-center gap-2">
+                            <i data-lucide="gamepad-2" class="w-5 h-5 text-nature-300"></i>
+                            <span data-i18n="heroBtnGame">Open Wordwall</span>
+                        </a>
+                    </div>
+
+                    <!-- Key Project Stats Bar -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                        <div class="p-3.5 rounded-2xl bg-black/25 backdrop-blur-sm border border-white/10">
+                            <span class="block font-display font-extrabold text-2xl text-nature-300">6</span>
+                            <span class="text-xs text-emerald-100/90" data-i18n="statActivities">Faoliyat Turlari</span>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-black/25 backdrop-blur-sm border border-white/10">
+                            <span class="block font-display font-extrabold text-2xl text-nature-300">4</span>
+                            <span class="text-xs text-emerald-100/90" data-i18n="statWeeks">Haftalik Reja</span>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-black/25 backdrop-blur-sm border border-white/10">
+                            <span class="block font-display font-extrabold text-2xl text-nature-300">10</span>
+                            <span class="text-xs text-emerald-100/90" data-i18n="statTips">Foydali Tavsiyalar</span>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-black/25 backdrop-blur-sm border border-white/10">
+                            <span class="block font-display font-extrabold text-2xl text-amber-300">60 daq</span>
+                            <span class="text-xs text-emerald-100/90" data-i18n="statPoints">Kunlik Harakat (WHO)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: HEALTHY LIFE Logo Card + Physical & Mental Well-Being Cards -->
+                <div class="lg:col-span-5 space-y-4">
+                    <!-- Main Brand Logo Card -->
+                    <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-white/30 bg-[#fbfcfb] p-6 flex flex-col items-center justify-center text-center">
+                        <svg viewBox="0 0 500 285" class="w-full max-w-[360px] h-auto" role="img" aria-label="HEALTHY LIFE Logo">
+                            <use href="#healthy-life-full-logo"></use>
+                        </svg>
+                    </div>
+
+                    <!-- Physical & Mental Well-Being Cards -->
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="p-5 rounded-3xl bg-white/95 text-slate-900 shadow-xl border border-emerald-100">
+                            <div class="w-10 h-10 rounded-xl bg-nature-100 text-nature-700 flex items-center justify-center mb-3">
+                                <i data-lucide="heart-pulse" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-display font-bold text-base mb-1" data-i18n="physTitle">Jismoniy Salomatlik</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed" data-i18n="physDesc">
+                                Kuchli yurak, suyaklar, mushaklar, to'g'ri qomat va yuqori kunlik quvvat.
+                            </p>
+                        </div>
+                        <div class="p-5 rounded-3xl bg-white/95 text-slate-900 shadow-xl border border-emerald-100">
+                            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center mb-3">
+                                <i data-lucide="brain" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-display font-bold text-base mb-1" data-i18n="mentTitle">Ruhiy Salomatlik</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed" data-i18n="mentDesc">
+                                Stressning kamayishi, darslarda yuqori diqqat, tinch uyqu va o'ziga ishonch.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Group Members Mini-Banner -->
+                    <div class="p-4 rounded-2xl bg-slate-950/85 backdrop-blur-md border border-white/15 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
+                        <span class="font-extrabold text-nature-300 uppercase tracking-wider shrink-0" data-i18n="groupTitleHeader">Guruh A'zolari:</span>
+                        <span class="font-semibold text-emerald-100">Maqsetov Qayrat • Muratbaev Islambek • Shu'kirbaeva Aysanem • Oralbaeva Shaxnoza</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         STEP 1: RESEARCH (ONLY 6 PHYSICAL ACTIVITY CARDS — NO 4 EXTRA BOXES)
+         ========================================== -->
+    <section id="step1" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-nature-100 text-nature-800 text-xs font-extrabold uppercase tracking-wider">
+                <i data-lucide="microscope" class="w-4 h-4"></i>
+                <span data-i18n="step1Badge">STEP 1 – RESEARCH</span>
+            </div>
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-slate-900" data-i18n="step1Title">
+                6 Types of Physical Activities for Teenagers
+            </h2>
+            <p class="text-slate-600 text-base sm:text-lg" data-i18n="step1Subtitle">
+                Detailed investigation of recommended weekly exercise, health benefits, possible risks, and equipment needed for each activity category.
+            </p>
+        </div>
+
+        <div id="research-filters" class="flex flex-wrap items-center justify-center gap-2.5"></div>
+        <div id="research-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </section>
+
+    <!-- ==========================================
+         STEP 2: PLAN THE PROGRAMME (4-WEEK PLAN)
+         ========================================== -->
+    <section id="step2" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
+            <div class="text-center max-w-3xl mx-auto space-y-3">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-nature-500/20 border border-nature-400/30 text-nature-300 text-xs font-extrabold uppercase tracking-wider">
+                    <i data-lucide="calendar-days" class="w-4 h-4"></i>
+                    <span data-i18n="step2Badge">STEP 2 – PLAN THE PROGRAMME</span>
+                </div>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white" data-i18n="step2Title">
+                    Realistic 4-Week Exercise Timetable
+                </h2>
+                <p class="text-slate-300 text-base sm:text-lg" data-i18n="step2Subtitle">
+                    Includes daily varied activities, warm-up & cool-down exercises, exercise duration, rest days, and fitness goals. Click any day to mark it complete!
+                </p>
+            </div>
+
+            <div id="week-tabs" class="grid grid-cols-2 lg:grid-cols-4 gap-4"></div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="p-6 rounded-3xl bg-white/5 border border-white/15 flex items-start gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-white p-1.5 flex items-center justify-center shrink-0">
+                        <svg viewBox="0 0 200 200" class="w-11 h-11"><use href="#healthy-life-emblem"></use></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-display font-bold text-lg text-white mb-1" data-i18n="warmupTitle">Recommended Warm-Up (5–10 Minutes Before Every Session)</h3>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="warmupDesc">
+                             Neck/shoulder rolls, arm circles, hip rotations, dynamic leg swings, light jogging in place, and ankle mobility to raise body temperature and prevent injury.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-6 rounded-3xl bg-white/5 border border-white/15 flex items-start gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-white p-1.5 flex items-center justify-center shrink-0">
+                        <svg viewBox="0 0 200 200" class="w-11 h-11"><use href="#healthy-life-emblem"></use></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-display font-bold text-lg text-white mb-1" data-i18n="cooldownTitle">Recommended Cool-Down (5–10 Minutes After Every Session)</h3>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="cooldownDesc">
+                            Slow walking to lower heart rate, static hamstring/quad/calf stretches (hold 20s each), child's pose, and deep nasal breathing for muscle recovery.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white text-slate-900 rounded-3xl shadow-2xl overflow-hidden border border-emerald-100">
+                <div class="p-6 sm:p-8 bg-gradient-to-r from-nature-50 to-emerald-50 border-b border-emerald-100 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-white border border-emerald-200 p-1.5 flex items-center justify-center shrink-0">
+                            <svg viewBox="0 0 200 200" class="w-11 h-11"><use href="#healthy-life-emblem"></use></svg>
+                        </div>
+                        <div>
+                            <span id="current-week-badge" class="text-xs font-extrabold uppercase tracking-wider text-nature-700 block mb-1">WEEK 1 SCHEDULE</span>
+                            <h3 id="current-week-heading" class="font-display font-extrabold text-xl sm:text-2xl text-slate-900">Week 1: Foundation & Habit Building</h3>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                        <div class="w-full sm:w-56">
+                            <div class="flex justify-between text-xs font-bold text-slate-700 mb-1.5">
+                                <span data-i18n="progressLabel">Weekly Goal Progress</span>
+                                <span id="week-progress-text" class="text-nature-700">2 / 7 Days (29%)</span>
+                            </div>
+                            <div class="w-full h-3 rounded-full bg-emerald-200/70 overflow-hidden">
+                                <div id="week-progress-bar" class="h-full bg-nature-600 rounded-full transition-all duration-300" style="width: 29%"></div>
+                            </div>
+                        </div>
+                        <button onclick="resetWeekCheckboxes()" class="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-bold transition flex items-center gap-1.5 self-start sm:self-auto">
+                            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                            <span data-i18n="resetCheckboxes">Reset Checkmarks</span>
+                        </button>
+                    </div>
+                </div>
+
+                    <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-100/80 text-slate-600 text-xs uppercase font-extrabold border-b border-slate-200">
+                                <th class="py-4 px-5" data-i18n="thStatus">Done</th>
+                                <th class="py-4 px-5" data-i18n="thDay">Day</th>
+                                <th class="py-4 px-5" data-i18n="thActivity">Activity & Visual</th>
+                                <th class="py-4 px-5" data-i18n="thWarmCool">Warm-Up & Cool-Down</th>
+                                <th class="py-4 px-5" data-i18n="thTime">Time</th>
+                                <th class="py-4 px-5" data-i18n="thGoal">Goal</th>
+                            </tr>
+                        </thead>
+                        <tbody id="timetable-body" class="divide-y divide-slate-200 text-sm"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         STEP 3: HEALTHY LIFESTYLE ADVICE (10 TIPS — BLUE WATER BOX REMOVED AS REQUESTED)
+         ========================================== -->
+    <section id="step3" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-nature-100 text-nature-800 text-xs font-extrabold uppercase tracking-wider">
+                <i data-lucide="apple" class="w-4 h-4"></i>
+                <span data-i18n="step3Badge">STEP 3 – HEALTHY LIFESTYLE ADVICE</span>
+            </div>
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-slate-900" data-i18n="step3Title">
+                10 Essential Recommendations for Teenagers
+            </h2>
+            <p class="text-slate-600 text-base sm:text-lg" data-i18n="step3Subtitle">
+                Practical scientific advice covering healthy eating, drinking water, sleeping habits, reducing screen time, managing stress, and staying motivated.
+            </p>
+        </div>
+
+        <div id="advice-grid" class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6"></div>
+    </section>
+
+    <!-- ==========================================
+         STEP 4: CREATE A FITNESS CAMPAIGN (WITH "HEALTHY LIFE" LOGO & “Small Steps. Big Changes.”)
+         ========================================== -->
+    <section id="step4" class="py-20 bg-emerald-950 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
+            <div class="text-center max-w-3xl mx-auto space-y-3">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-nature-500/20 border border-nature-400/30 text-nature-300 text-xs font-extrabold uppercase tracking-wider">
+                    <i data-lucide="megaphone" class="w-4 h-4"></i>
+                    <span data-i18n="step4Badge">STEP 4 – CREATE A FITNESS CAMPAIGN</span>
+                </div>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white" data-i18n="step4Title">
+                    Teen Fitness Campaign: "HEALTHY LIFE"
+                </h2>
+                <p class="text-emerald-100/80 text-base sm:text-lg" data-i18n="step4Subtitle">
+                    Complete campaign poster, logo, slogan, infographic, 5 motivational tips, and our weekly teen challenge.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+                <!-- Campaign Poster & Infographic with HEALTHY LIFE Logo replacing Green Pulse -->
+                <div class="lg:col-span-7 bg-gradient-to-br from-nature-800 via-emerald-900 to-slate-900 rounded-3xl p-6 sm:p-8 border border-nature-500/30 shadow-2xl flex flex-col justify-between space-y-6">
+                    <!-- Replaced Green Pulse header with the HEALTHY LIFE Logo Banner -->
+                    <div class="rounded-3xl bg-[#fbfcfb] border-4 border-nature-400/70 p-5 sm:p-7 shadow-xl flex flex-col items-center justify-center text-center">
+                        <svg viewBox="0 0 500 285" class="w-full max-w-[380px] h-auto" role="img" aria-label="HEALTHY LIFE Campaign Logo">
+                            <use href="#healthy-life-full-logo"></use>
+                        </svg>
+                    </div>
+
+                    <!-- Requested Slogan: “Small Steps. Big Changes.” -->
+                    <div class="p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center space-y-2">
+                        <span class="text-xs font-extrabold uppercase tracking-widest text-nature-300 block" data-i18n="sloganLabel">BIZNING SHIORIMIZ / OUR SLOGAN:</span>
+                        <p class="font-display font-black text-2xl sm:text-4xl text-white tracking-tight" data-i18n="sloganText">
+                            “Small Steps. Big Changes.”
+                        </p>
+                        <p class="text-xs sm:text-sm font-semibold text-emerald-200" data-i18n="sloganSubText">
+                            “Kichik qadamlar. Katta o‘zgarishlar.”
+                        </p>
+                    </div>
+
+                    <div class="grid sm:grid-cols-3 gap-4">
+                        <div class="p-4 rounded-2xl bg-slate-950/60 border border-white/10">
+                            <span class="text-2xl font-black text-nature-400">60 Min</span>
+                            <p class="text-xs text-emerald-100 mt-1" data-i18n="infoStat1">Recommended daily physical activity for teenagers (WHO)</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-slate-950/60 border border-white/10">
+                            <span class="text-2xl font-black text-amber-400">3+ Days</span>
+                            <p class="text-xs text-emerald-100 mt-1" data-i18n="infoStat2">Weekly muscle and bone strengthening sessions</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-slate-950/60 border border-white/10">
+                            <span class="text-2xl font-black text-sky-400">8–10 Hours</span>
+                            <p class="text-xs text-emerald-100 mt-1" data-i18n="infoStat3">Nightly sleep for brain focus and recovery (CDC)</p>
+                        </div>
+                    </div>
+
+                    <div class="text-xs text-emerald-300/80 text-center pt-2 border-t border-white/10" data-i18n="posterFooter">
+                        Official Campaign Poster & Infographic • Designed by Maqsetov, Muratbaev, Shu'kirbaeva & Oralbaeva
+                    </div>
+                </div>
+
+                <!-- 5 Motivational Tips + Weekly Challenge -->
+                <div class="lg:col-span-5 bg-white text-slate-900 rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 p-1 flex items-center justify-center shrink-0">
+                                <svg viewBox="0 0 200 200" class="w-7 h-7"><use href="#healthy-life-emblem"></use></svg>
+                            </div>
+                            <h3 class="font-display font-extrabold text-xl text-slate-900" data-i18n="fiveTipsTitle">
+                                5 Motivational Tips for Teenagers
+                            </h3>
+                        </div>
+                        <ul id="campaign-tips-list" class="space-y-3 text-sm text-slate-700"></ul>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-300 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-amber-400 text-slate-950 font-black text-xs uppercase" data-i18n="challengeBadge">ONE WEEKLY CHALLENGE</span>
+                            <i data-lucide="flame" class="w-5 h-5 text-amber-600"></i>
+                        </div>
+                        <h4 class="font-display font-extrabold text-lg text-slate-900" data-i18n="challengeTitle">
+                            "Active Nature & Screen-Free Park Week"
+                        </h4>
+                        <p class="text-xs text-slate-700 leading-relaxed" data-i18n="challengeDesc">
+                            Walk or cycle at your own pace, take the stairs instead of the elevator, and spend at least 20–30 minutes in a green park without your phone every day!
+                        </p>
+                        <button onclick="joinChallenge()" class="w-full py-3.5 px-4 rounded-xl bg-slate-900 hover:bg-nature-700 text-white font-extrabold text-xs sm:text-sm transition flex items-center justify-center gap-2 shadow-md">
+                            <i data-lucide="award" class="w-4 h-4 text-amber-400"></i>
+                            <span id="challenge-btn-text">Accept Weekly Challenge (Join Our Group!)</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         STEP 5: THANK YOU, GROUP MEMBERS & WORDWALL LINK
+         ========================================== -->
+    <section id="step5" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-nature-100 text-nature-800 text-xs font-extrabold uppercase tracking-wider">
+                <i data-lucide="award" class="w-4 h-4"></i>
+                <span data-i18n="step5Badge">STEP 5 – PRESENTATION & WORDWALL GAME</span>
+            </div>
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-slate-900" data-i18n="step5Title">
+                Diqqatingiz uchun rahmat! / Thank You For Your Attention!
+            </h2>
+            <p class="text-slate-600 text-base sm:text-lg" data-i18n="step5Subtitle">
+                Loyiha ishtirokchilari va interaktiv Wordwall o'yiniga o'tish bo'limi.
+            </p>
+        </div>
+
+        <!-- Group Members & Wordwall Card -->
+        <div class="grid md:grid-cols-2 gap-8 items-stretch">
+            <!-- Group Members Card -->
+            <div class="bg-gradient-to-br from-nature-800 via-emerald-900 to-slate-900 text-white rounded-3xl p-8 shadow-2xl border border-nature-600/40 flex flex-col justify-between space-y-6">
+                <div class="space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-white p-1.5 flex items-center justify-center">
+                        <svg viewBox="0 0 200 200" class="w-11 h-11"><use href="#healthy-life-emblem"></use></svg>
+                    </div>
+                    <div>
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-nature-300 block mb-1" data-i18n="groupCardSub">PROJECT GROUP MEMBERS</span>
+                        <h3 class="font-display font-extrabold text-2xl sm:text-3xl" data-i18n="groupCardTitle">Guruhimiz A'zolari</h3>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 rounded-2xl bg-white/10 border border-white/15 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-nature-500 text-slate-950 font-black flex items-center justify-center shrink-0">1</div>
+                            <span class="font-bold text-sm sm:text-base">Maqsetov Qayrat</span>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-white/10 border border-white/15 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-nature-500 text-slate-950 font-black flex items-center justify-center shrink-0">2</div>
+                            <span class="font-bold text-sm sm:text-base">Muratbaev Islambek</span>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-white/10 border border-white/15 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-nature-500 text-slate-950 font-black flex items-center justify-center shrink-0">3</div>
+                            <span class="font-bold text-sm sm:text-base">Shu'kirbaeva Aysanem</span>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-white/10 border border-white/15 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-nature-500 text-slate-950 font-black flex items-center justify-center shrink-0">4</div>
+                            <span class="font-bold text-sm sm:text-base">Oralbaeva Shaxnoza</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-white/15 text-center">
+                    <p class="font-display font-extrabold text-xl text-amber-300" data-i18n="thanksMessage">
+                        "Diqqatingiz uchun rahmat! / Thank you for your attention!"
+                    </p>
+                </div>
+            </div>
+
+            <!-- Wordwall External Link Card -->
+            <div class="bg-white rounded-3xl p-8 shadow-2xl border-2 border-emerald-200 flex flex-col justify-between space-y-6">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="w-14 h-14 rounded-2xl bg-nature-100 text-nature-700 flex items-center justify-center">
+                            <i data-lucide="gamepad-2" class="w-8 h-8"></i>
+                        </div>
+                        <svg viewBox="0 0 200 200" class="w-12 h-12"><use href="#healthy-life-emblem"></use></svg>
+                    </div>
+                    <div>
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-nature-700 block mb-1" data-i18n="wordwallCardSub">INTERACTIVE GAME</span>
+                        <h3 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900" data-i18n="wordwallCardTitle">Wordwall Viktorina va O'yin</h3>
+                    </div>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed" data-i18n="wordwallCardDesc">
+                        Mavzu bo'yicha bilimlarni mustahkamlash uchun maxsus tayyorlangan interaktiv o'yinimizni oching. Tugmani bosganingizda o'yin yangi sahifada ochiladi!
+                    </p>
+                </div>
+
+                <div class="space-y-3 pt-4">
+                    <a href="https://wordwall.net/ru/resource/121298095?wwmethod=link" target="_blank" rel="noopener noreferrer" 
+                       class="w-full py-5 px-6 rounded-2xl bg-nature-600 hover:bg-nature-500 text-white font-extrabold text-base sm:text-lg shadow-xl shadow-nature-600/30 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+                        <i data-lucide="external-link" class="w-6 h-6"></i>
+                        <span data-i18n="openWordwallBtn">Open Wordwall</span>
+                    </a>
+                    <div class="text-xs text-slate-500 text-center font-medium" data-i18n="wordwallNote">
+                        Bosilganda yangi betga o'tib ketadi / Opens in a new browser tab
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center">
+                    <svg viewBox="0 0 200 200" class="w-8 h-8"><use href="#healthy-life-emblem"></use></svg>
+                </div>
+                <div>
+                    <span class="font-display font-extrabold text-white text-lg">HEALTHY <span class="text-[#57b819]">LIFE</span></span>
+                    <p class="text-xs text-slate-500" data-i18n="footerSub">Project Work: Design Your Personal Fitness Programme</p>
+                </div>
+            </div>
+            <div class="text-xs text-slate-500 text-center sm:text-right">
+                <p data-i18n="footerCopy">Group: Maqsetov Qayrat, Muratbaev Islambek, Shu'kirbaeva Aysanem, Oralbaeva Shaxnoza</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT & DATA -->
+    <script>
+        let currentLang = 'uz';
+        let currentCategory = 'all';
+        let currentWeek = 1;
+        let challengeJoined = false;
+        let completedDays = { 1: [0, 1], 2: [0], 3: [], 4: [] };
+
+        // Self-contained SVG Data URI of the "HEALTHY LIFE" Logo for automatic fallback if any photo fails to load
+        const HEALTHY_LIFE_LOGO_DATA_URI = "data:image/svg+xml;utf8," + encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+                <rect width="600" height="400" fill="#fbfcfb"/>
+                <g transform="translate(200, 18)">
+                    <path d="M 105 24 A 78 78 0 1 0 92 178 A 72 72 0 1 1 112 30 Z" fill="#064e2c" />
+                    <path d="M 122 25 A 78 78 0 0 1 102 179 A 73 73 0 0 0 128 32 Z" fill="#57b819" />
+                    <path d="M 92 168 C 52 158 38 112 58 66 C 78 86 108 112 96 168 Z" fill="#299438" />
+                    <path d="M 93 166 Q 82 122 65 82" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" fill="none" />
+                    <path d="M 103 168 C 118 134 104 95 72 52 C 95 72 114 86 138 40 C 122 88 132 132 103 168 Z" fill="#064e2c" />
+                    <path d="M 116 146 C 125 110 136 84 148 34 C 156 68 144 108 118 138 Z" fill="#57b819" />
+                    <circle cx="104" cy="56" r="11.5" fill="#0d6e3c" />
+                </g>
+                <text x="300" y="285" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="46" fill="#064e2c">HEALTHY <tspan fill="#57b819">LIFE</tspan></text>
+                <text x="300" y="330" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="15" fill="#064e2c" letter-spacing="3">YOUR HEALTH • YOUR POWER • YOUR FUTURE</text>
+            </svg>
+        `);
+
+        function handleLogoFallback(imgEl) {
+            imgEl.onerror = null;
+            imgEl.src = HEALTHY_LIFE_LOGO_DATA_URI;
+        }
+
+        const researchActivities = [
+            {
+                id: "aerobic",
+                img: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80",
+                en: {
+                    title: "1. Aerobic Exercise",
+                    sub: "Jogging, Cycling, Swimming, Jump Rope",
+                    weekly: "Average 60 minutes of daily moderate-to-vigorous activity across the week (WHO)",
+                    benefits: "Strengthens heart and lungs, improves stamina, boosts mood, and improves sleep quality.",
+                    risks: "5–10 minutes of activity-specific warm-up is recommended to prevent ankle sprains or dehydration.",
+                    equip: "Comfortable running shoes, breathable sportswear, reusable water bottle, jump rope."
+                },
+                uz: {
+                    title: "1. Aerobik Mashqlar",
+                    sub: "Yugurish (Jogging), Velosiped, Suzish, Arqonda sakrash",
+                    weekly: "Hafta davomida kuniga o'rtacha 60 daqiqa o'rtacha yoki yuqori faollik (JSST / WHO)",
+                    benefits: "Yurak va o'pka chidamliligini oshiradi, kayfiyatni ko'taradi va uyqu sifatini yaxshilaydi.",
+                    risks: "Jarohat va suvsizlanishning oldini olish uchun mashqdan oldin 5–10 daqiqa qizib olish tavsiya etiladi.",
+                    equip: "Qulay yugurish poyabzali, havo o'tkazuvchi sport kiyimi, suv idishi, sakrash arqoni."
+                }
+            },
+            {
+                id: "strength",
+                img: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80",
+                en: {
+                    title: "2. Strength Training",
+                    sub: "Bodyweight Squats, Push-ups, Planks, Resistance Bands",
+                    weekly: "Recommended at least 3 days per week (25–40 minutes per session per WHO)",
+                    benefits: "Builds strong muscles and bone density during teenage growth, improves posture, and boosts metabolism.",
+                    risks: "Use bodyweight or light resistance with proper form and 5–10 min warm-up to avoid muscle strain.",
+                    equip: "Exercise mat, resistance bands, light dumbbells, pull-up bar."
+                },
+                uz: {
+                    title: "2. Kuch Mashqlari",
+                    sub: "Squat (o'tirib-turish), Push-up, Planka, Rezina tasmalar",
+                    weekly: "JSST (WHO) tavsiyasiga ko'ra haftasiga kamida 3 kun (25–40 daqiqadan)",
+                    benefits: "O'smirlik davrida suyak va mushaklarni mustahkamlaydi, qomatni (osanka) tekislaydi.",
+                    risks: "Mushak cho'zilishining oldini olish uchun 5–10 daqiqa qizish va to'g'ri texnikada bajarish tavsiya etiladi.",
+                    equip: "Sport gilamchasi (mat), cho'ziluvchan rezina tasmalar, yengil gantellar."
+                }
+            },
+            {
+                id: "flexibility",
+                img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80",
+                en: {
+                    title: "3. Flexibility Exercises",
+                    sub: "Yoga, Dynamic & Static Stretching, Mobility",
+                    weekly: "4–7 times per week (15–30 minutes daily or after workouts)",
+                    benefits: "Increases joint range of motion, prevents injury, improves posture, and relieves stiffness from school desks.",
+                    risks: "Warm up 5–10 minutes before deep stretching to avoid tendon or muscle pulls.",
+                    equip: "Non-slip yoga mat, comfortable stretchable clothing."
+                },
+                uz: {
+                    title: "3. Moslashuvchanlik Mashqlari",
+                    sub: "Yoga, Dinamik va Statik Cho'zilish (Stretching)",
+                    weekly: "Haftada 4–7 marta (har kuni yoki mashqdan so'ng 15–30 daqiqa)",
+                    benefits: "Bo'g'imlar harakatchanligini oshiradi, jarohatlarning oldini oladi va qomatni yaxshilaydi.",
+                    risks: "Sovuq mushaklarni keskin cho'zmaslik uchun 5–10 daqiqa yengil qizib olish tavsiya etiladi.",
+                    equip: "Sirpanmaydigan yoga gilamchasi, erkin harakatlanishga qulay kiyim."
+                }
+            },
+            {
+                id: "balance",
+                img: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80",
+                en: {
+                    title: "4. Balance & Coordination",
+                    sub: "Agility Drills, Stability Exercises, Jump Rope",
+                    weekly: "2–4 times per week (20–30 minutes integrated into workouts)",
+                    benefits: "Improves body control, brain-to-muscle coordination, sharpens reflexes, and prevents falls.",
+                    risks: "Practice on flat, non-slip surfaces after a 5–10 minute warm-up.",
+                    equip: "Agility ladder, jump rope, cones, flat safe floor."
+                },
+                uz: {
+                    title: "4. Muvozanat va Koordinatsiya",
+                    sub: "Chaqqonlik mashqlari, Barqarorlik va Arqonda sakrash",
+                    weekly: "Haftada 2–4 marta (20–30 daqiqa asosiy mashqlar bilan birga)",
+                    benefits: "Tana boshqaruvini, miya va mushaklar uyg'unligini hamda reflekslarni kuchaytiradi.",
+                    risks: "5–10 daqiqa qizib olgach, tekis va sirpanmaydigan maydonchada bajarish tavsiya etiladi.",
+                    equip: "Koordinatsion narvoncha, sakrash arqoni, konuslar, tekis maydoncha."
+                }
+            },
+            {
+                id: "outdoor",
+                img: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800&q=80",
+                en: {
+                    title: "5. Outdoor Activities",
+                    sub: "Hiking, Brisk Walking in Parks, Nature Runs",
+                    weekly: "2–4 times per week or weekends (30–60 minutes in nature)",
+                    benefits: "Provides natural Vitamin D from sunlight, reduces school stress, and boosts mental well-being.",
+                    risks: "Wear weather-appropriate shoes, stay hydrated, and do a 5–10 min warm-up walk.",
+                    equip: "Trail or walking shoes, sun hat, reusable water bottle."
+                },
+                uz: {
+                    title: "5. Ochiq Havodagi Faoliyat",
+                    sub: "Tabiat qo'ynida sayr, Bog'da tez yurish, Yengil yugurish",
+                    weekly: "Haftada 2–4 marta yoki dam olish kunlari (30–60 daqiqa tabiatda)",
+                    benefits: "Tabiiy D vitamini beradi, o'qish charchog'ini kamaytiradi va ruhiy salomatlikni mustahkamlaydi.",
+                    risks: "Ob-havoga mos poyabzal kiyish, suv ichish va 5–10 daqiqa yengil qizib olish tavsiya etiladi.",
+                    equip: "Qulay yurish poyabzali, bosh kiyim (kepka), suv idishi."
+                }
+            },
+            {
+                id: "teamsports",
+                img: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=800&q=80",
+                en: {
+                    title: "6. Team Sports",
+                    sub: "Football, Basketball, Volleyball",
+                    weekly: "2–3 times per week (45–60 minutes after school or weekends)",
+                    benefits: "Develops teamwork, communication, social friendships, and strong cardiovascular motivation.",
+                    risks: "5–10 minutes of dynamic team warm-up and fair play rules help prevent collisions or sprains.",
+                    equip: "Football/basketball/volleyball, team jerseys, court or turf shoes."
+                },
+                uz: {
+                    title: "6. Jamoaviy Sport Turlari",
+                    sub: "Futbol, Basketbol, Voleybol",
+                    weekly: "Haftada 2–3 marta (darsdan so'ng yoki dam olish kunlari 45–60 daqiqa)",
+                    benefits: "Jamoaviy ishlash, muloqot, do'stlik va yuqori motivatsiyani shakllantiradi.",
+                    risks: "To'qnashuv va pay cho'zilishining oldini olish uchun 5–10 daqiqa jamoaviy qizib olish tavsiya etiladi.",
+                    equip: "Futbol/basketbol/voleybol to'pi, jamoaviy forma, sport poyabzali."
+                }
+            }
+        ];
+
+        const weeklyPlans = {
+            1: {
+                titleEn: "Week 1: Foundation & Habit Building",
+                titleUz: "1-Hafta: Poydevor va Odat Shakllantirish",
+                days: [
+                    {
+                        dayEn: "Monday", dayUz: "Dushanba",
+                        actEn: "Jogging in the Park (Aerobic)", actUz: "Bog'da Yugurish – Jogging (Aerobika)",
+                        img: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "30 min", timeUz: "30 daqiqa",
+                        wcEn: "5 min dynamic warm-up + 5 min walk cool-down", wcUz: "5 daq dinamik qizish + 5 daq sekin yurib sovush",
+                        goalEn: "Improve endurance", goalUz: "Chidamlilikni oshirish (Improve endurance)"
+                    },
+                    {
+                        dayEn: "Tuesday", dayUz: "Seshanba",
+                        actEn: "Yoga & Full-Body Stretching", actUz: "Yoga va Bo'g'imlar Cho'zilishi",
+                        img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "25 min", timeUz: "25 daqiqa",
+                        wcEn: "5 min breathwork + 5 min child's pose", wcUz: "5 daq nafas mashqi + 5 daq bo'shashish",
+                        goalEn: "Increase flexibility", goalUz: "Moslashuvchanlikni oshirish (Increase flexibility)"
+                    },
+                    {
+                        dayEn: "Wednesday", dayUz: "Chorshanba",
+                        actEn: "Bodyweight Strength (Push-ups, Squats, Plank)", actUz: "Kuch Mashqlari (Push-up, Squat, Planka)",
+                        img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "30 min", timeUz: "30 daqiqa",
+                        wcEn: "5 min joint prep + 5 min arm/leg stretch", wcUz: "5 daq bo'g'im qizdirish + 5 daq cho'zilish",
+                        goalEn: "Build core & muscle strength", goalUz: "Mushak va suyak kuchini oshirish"
+                    },
+                    {
+                        dayEn: "Thursday", dayUz: "Payshanba",
+                        actEn: "Active Rest Day (Light Nature Walk)", actUz: "Faol Dam Olish Kuni (Tabiatda Yengil Sayr)",
+                        img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "20 min", timeUz: "20 daqiqa",
+                        wcEn: "Gentle breathing & ankle mobility", wcUz: "Erkin nafas va yengil bo'g'im harakati",
+                        goalEn: "Muscle recovery & stress relief", goalUz: "Mushaklar tiklanishi va stressni kamaytirish"
+                    },
+                    {
+                        dayEn: "Friday", dayUz: "Juma",
+                        actEn: "Team Sports: Football or Basketball", actUz: "Jamoaviy Sport: Futbol yoki Basketbol",
+                        img: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "45 min", timeUz: "45 daqiqa",
+                        wcEn: "8 min agility warm-up + 7 min team stretch", wcUz: "8 daq yugurib qizish + 7 daq jamoaviy cho'zilish",
+                        goalEn: "Improve agility & teamwork", goalUz: "Chaqqonlik va jamoaviy hamkorlik"
+                    },
+                    {
+                        dayEn: "Saturday", dayUz: "Shanba",
+                        actEn: "Outdoor Cycling or Nature Trail Hike", actUz: "Ochiq Havoda Velosiped yoki Tabiatga Sayr",
+                        img: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "50 min", timeUz: "50 daqiqa",
+                        wcEn: "5 min leg prep + 5 min cool-down walk", wcUz: "5 daq oyoq qizdirish + 5 daq sekin yurish",
+                        goalEn: "Cardio stamina & Vitamin D", goalUz: "Yurak-o'pka quvvati va toza havo"
+                    },
+                    {
+                        dayEn: "Sunday", dayUz: "Yakshanba",
+                        actEn: "Full Rest Day & Sleep Recovery", actUz: "To'liq Dam Olish va Uyquni Tiklash Kuni",
+                        img: "https://images.unsplash.com/photo-1511295742362-92c96b1cf484?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "Rest Day", timeUz: "Dam olish",
+                        wcEn: "10 min gentle evening foam roll/stretch", wcUz: "10 daq kechki yengil bo'shashish mashqi",
+                        goalEn: "Full physical & mental regeneration", goalUz: "Keyingi haftaga to'liq kuch yig'ish"
+                    }
+                ]
+            },
+            2: {
+                titleEn: "Week 2: Progression & Coordination",
+                titleUz: "2-Hafta: Yuklamani Oshirish va Koordinatsiya",
+                days: [
+                    {
+                        dayEn: "Monday", dayUz: "Dushanba",
+                        actEn: "Interval Jogging & Jump Rope", actUz: "Interval Yugurish va Arqonda Sakrash",
+                        img: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "35 min", timeUz: "35 daqiqa",
+                        wcEn: "6 min warm-up + 5 min calf stretch", wcUz: "6 daq qizib olish + 5 daq boldir cho'zilishi",
+                        goalEn: "Boost heart rate recovery", goalUz: "Yurak-qon tomir chidamliligini oshirish"
+                    },
+                    {
+                        dayEn: "Tuesday", dayUz: "Seshanba",
+                        actEn: "Balance Drills & Dynamic Yoga Flow", actUz: "Muvozanat Mashqlari va Dinamik Yoga",
+                        img: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "30 min", timeUz: "30 daqiqa",
+                        wcEn: "5 min mobility + 5 min breathing", wcUz: "5 daq bo'g'im mashqi + 5 daq chuqur nafas",
+                        goalEn: "Enhance balance & posture", goalUz: "Muvozanat va qomatni tekislash"
+                    },
+                    {
+                        dayEn: "Wednesday", dayUz: "Chorshanba",
+                        actEn: "Resistance Band & Core Circuit", actUz: "Rezina Tasma va Press (Core) Mashqlari",
+                        img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "35 min", timeUz: "35 daqiqa",
+                        wcEn: "6 min shoulder/hip warm-up + 5 min cool-down", wcUz: "6 daq yelka qizdirish + 5 daq sovush",
+                        goalEn: "Upper body & back strength", goalUz: "Yelka va bel mushaklarini mustahkamlash"
+                    },
+                    {
+                        dayEn: "Thursday", dayUz: "Payshanba",
+                        actEn: "Active Rest & Mobility Stretching", actUz: "Faol Dam Olish va Yengil Cho'zilish",
+                        img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "20 min", timeUz: "20 daqiqa",
+                        wcEn: "Gentle neck & back release", wcUz: "Bo'yin va bel charchog'ini yozish",
+                        goalEn: "Prevent stiffness from study", goalUz: "Darslardan keyingi charchoqni chiqarish"
+                    },
+                    {
+                        dayEn: "Friday", dayUz: "Juma",
+                        actEn: "Volleyball or Badminton Match", actUz: "Jamoaviy Voleybol yoki Badminton",
+                        img: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "50 min", timeUz: "50 daqiqa",
+                        wcEn: "8 min court warm-up + 7 min stretch", wcUz: "8 daq maydonda qizish + 7 daq sovush",
+                        goalEn: "Reflexes & hand-eye coordination", goalUz: "Refleks va ko'z-qo'l koordinatsiyasi"
+                    },
+                    {
+                        dayEn: "Saturday", dayUz: "Shanba",
+                        actEn: "Park Eco-Walk & Outdoor Fitness", actUz: "Tabiat Qo'ynida Eko-Sayr va Mashq",
+                        img: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "60 min", timeUz: "60 daqiqa",
+                        wcEn: "5 min warm-up + hydration break", wcUz: "5 daq qizib olish + suv balansi",
+                        goalEn: "Mental clarity & fat burn", goalUz: "Ruhiy tetiklik va umumiy chidamlilik"
+                    },
+                    {
+                        dayEn: "Sunday", dayUz: "Yakshanba",
+                        actEn: "Rest Day & Healthy Meal Prep", actUz: "Dam Olish va Foydali Taom Tayyorlash",
+                        img: "https://images.unsplash.com/photo-1511295742362-92c96b1cf484?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "Rest Day", timeUz: "Dam olish",
+                        wcEn: "8–10 hours quality teen sleep", wcUz: "8–10 soat to'laqonli uyqu",
+                        goalEn: "Complete body recovery", goalUz: "Organizmni to'liq tiklash"
+                    }
+                ]
+            },
+            3: {
+                titleEn: "Week 3: Stamina & Strength Peak",
+                titleUz: "3-Hafta: Yuqori Chidamlilik va Kuch Bosqichi",
+                days: [
+                    {
+                        dayEn: "Monday", dayUz: "Dushanba",
+                        actEn: "40-Min Tempo Run & Cardio Drills", actUz: "40 Daqiqalik Tempda Yugurish va Kardio",
+                        img: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "40 min", timeUz: "40 daqiqa",
+                        wcEn: "7 min dynamic warm-up + 6 min stretch", wcUz: "7 daq dinamik qizish + 6 daq cho'zilish",
+                        goalEn: "High aerobic stamina", goalUz: "Yuqori nafas va yurak chidamliligi"
+                    },
+                    {
+                        dayEn: "Tuesday", dayUz: "Seshanba",
+                        actEn: "Pilates & Deep Flexibility", actUz: "Pilates va Chuqur Moslashuvchanlik",
+                        img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "35 min", timeUz: "35 daqiqa",
+                        wcEn: "5 min spine warm-up + 5 min breath", wcUz: "5 daq umurtqa qizdirish + 5 daq nafas",
+                        goalEn: "Core stability & joint health", goalUz: "Umurtqa va bo'g'imlar salomatligi"
+                    },
+                    {
+                        dayEn: "Wednesday", dayUz: "Chorshanba",
+                        actEn: "Full-Body Strength (3 Sets Circuit)", actUz: "To'liq Tana Kuch Mashqlari (3 Aylana)",
+                        img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "40 min", timeUz: "40 daqiqa",
+                        wcEn: "8 min warm-up + 7 min cool-down", wcUz: "8 daq qizish + 7 daq mushak bo'shashtirish",
+                        goalEn: "Muscular endurance", goalUz: "Mushaklar chidamliligini oshirish"
+                    },
+                    {
+                        dayEn: "Thursday", dayUz: "Payshanba",
+                        actEn: "Active Recovery: Brisk Park Walk", actUz: "Faol Tiklanish: Bog'da Tez Yurish",
+                        img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "25 min", timeUz: "25 daqiqa",
+                        wcEn: "5 min light ankle & hip circles", wcUz: "5 daq yengil bo'g'im mashqlari",
+                        goalEn: "Active blood circulation", goalUz: "Qon aylanishini yaxshilash"
+                    },
+                    {
+                        dayEn: "Friday", dayUz: "Juma",
+                        actEn: "Football / Basketball Friendly Tournament", actUz: "Do'stona O'yin: Futbol yoki Basketbol",
+                        img: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "55 min", timeUz: "55 daqiqa",
+                        wcEn: "10 min team warm-up + 8 min cool-down", wcUz: "10 daq jamoaviy qizish + 8 daq sovush",
+                        goalEn: "Speed, teamwork & leadership", goalUz: "Tezlik va jamoaviy ruhni oshirish"
+                    },
+                    {
+                        dayEn: "Saturday", dayUz: "Shanba",
+                        actEn: "Nature Hiking or Long Bike Ride", actUz: "Tabiatga Sayohat yoki Uzoq Velosayr",
+                        img: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "65 min", timeUz: "65 daqiqa",
+                        wcEn: "6 min warm-up + 6 min leg stretch", wcUz: "6 daq qizish + 6 daq oyoq cho'zish",
+                        goalEn: "Long-distance endurance", goalUz: "Uzoq masofaga chidamlilik"
+                    },
+                    {
+                        dayEn: "Sunday", dayUz: "Yakshanba",
+                        actEn: "Full Rest Day & Digital Detox", actUz: "To'liq Dam Olish va Telefonsiz Kun",
+                        img: "https://images.unsplash.com/photo-1511295742362-92c96b1cf484?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "Rest Day", timeUz: "Dam olish",
+                        wcEn: "Relaxing reading & 9h sleep", wcUz: "Kitob o'qish va 9 soat uxlash",
+                        goalEn: "Mental & nervous system reset", goalUz: "Asab tizimi va miyani dam oldirish"
+                    }
+                ]
+            },
+            4: {
+                titleEn: "Week 4: Mastery & Lifelong Healthy Lifestyle",
+                titleUz: "4-Hafta: Yuqori Natija va Doimiy Sog'lom Odat",
+                days: [
+                    {
+                        dayEn: "Monday", dayUz: "Dushanba",
+                        actEn: "5K Park Run / Brisk Walk Challenge", actUz: "Bog'da Faol Yugurish va Tez Yurish",
+                        img: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "45 min", timeUz: "45 daqiqa",
+                        wcEn: "8 min dynamic warm-up + 8 min cool-down", wcUz: "8 daq qizib olish + 8 daq sovush",
+                        goalEn: "Test 4-week cardio progress", goalUz: "4 haftalik chidamlilik natijasini sinash"
+                    },
+                    {
+                        dayEn: "Tuesday", dayUz: "Seshanba",
+                        actEn: "Full Yoga & Balance Mastery Session", actUz: "Mukammal Yoga va Muvozanat Mashg'uloti",
+                        img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "35 min", timeUz: "35 daqiqa",
+                        wcEn: "5 min breathwork + 5 min meditation", wcUz: "5 daq nafas mashqi + 5 daq relaksatsiya",
+                        goalEn: "Peak flexibility & calm mind", goalUz: "Yuqori moslashuvchanlik va xotirjamlik"
+                    },
+                    {
+                        dayEn: "Wednesday", dayUz: "Chorshanba",
+                        actEn: "Strength & Agility Finale Circuit", actUz: "Kuch va Chaqqonlik Yakuniy Mashg'uloti",
+                        img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "45 min", timeUz: "45 daqiqa",
+                        wcEn: "8 min warm-up + 7 min full stretch", wcUz: "8 daq qizish + 7 daq to'liq cho'zilish",
+                        goalEn: "Peak muscular & core fitness", goalUz: "Kuch va chaqqonlik ko'rsatkichini mustahkamlash"
+                    },
+                    {
+                        dayEn: "Thursday", dayUz: "Payshanba",
+                        actEn: "Active Recovery & Nature Walk with Friends", actUz: "Faol Tiklanish: Do'stlar Bilan Tabiatda Sayr",
+                        img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "30 min", timeUz: "30 daqiqa",
+                        wcEn: "Light stretching outdoors", wcUz: "Ochiq havoda yengil cho'zilish",
+                        goalEn: "Social well-being & recovery", goalUz: "Do'stona muhit va tiklanish"
+                    },
+                    {
+                        dayEn: "Friday", dayUz: "Juma",
+                        actEn: "Class Team Sports Festival", actUz: "Sinf Jamoaviy Sport Festivali",
+                        img: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "60 min", timeUz: "60 daqiqa",
+                        wcEn: "10 min warm-up + 10 min cool-down", wcUz: "10 daq qizib olish + 10 daq sovush",
+                        goalEn: "Celebrate teamwork & fitness", goalUz: "Jamoaviy g'alaba va sport bayrami"
+                    },
+                    {
+                        dayEn: "Saturday", dayUz: "Shanba",
+                        actEn: "Outdoor Group Eco-Challenge", actUz: "Ochiq Tabiatda Guruh Eko-Marafoni",
+                        img: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "60 min", timeUz: "60 daqiqa",
+                        wcEn: "5 min warm-up + group reflection", wcUz: "5 daq qizish + natijalarni muhokama qilish",
+                        goalEn: "Make fitness a lifelong habit", goalUz: "Sog'lom hayotni doimiy odatga aylantirish"
+                    },
+                    {
+                        dayEn: "Sunday", dayUz: "Yakshanba",
+                        actEn: "Rest, Programme Evaluation & Next Goals", actUz: "Dam Olish va 4 Haftalik Natijalarni Sarhisob Qilish",
+                        img: "https://images.unsplash.com/photo-1511295742362-92c96b1cf484?auto=format&fit=crop&w=300&q=80",
+                        timeEn: "Rest Day", timeUz: "Dam olish",
+                        wcEn: "Relaxation & preparing presentation", wcUz: "Dam olish va loyiha taqdimotiga tayyorgarlik",
+                        goalEn: "Ready for Step 5 Presentation!", goalUz: "Taqdimot va Wordwall o'yiniga tayyorlik!"
+                    }
+                ]
+            }
+        };
+
+        const lifestyleAdvice = [
+            {
+                num: "01",
+                img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80",
+                en: { title: "Balanced Nutrition", desc: "Eat plenty of fresh fruits, vegetables, whole grains, and lean proteins every day to fuel teenage growth." },
+                uz: { title: "Balanslangan Ovqatlanish", desc: "Har kuni yangi meva-sabzavotlar, to'liq donli mahsulotlar va foydali oqsillarni iste'mol qiling." }
+            },
+            {
+                num: "02",
+                img: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=600&q=80",
+                en: { title: "Smart Hydration", desc: "Drink clean water regularly throughout the day according to your thirst, weather, and physical activity level." },
+                uz: { title: "To'g'ri Suv Ichish Odati", desc: "Kun davomida chanqoqlik va jismoniy faollik darajasiga qarab muntazam toza suv ichishni odat qiling." }
+            },
+            {
+                num: "03",
+                img: "https://images.unsplash.com/photo-1511295742362-92c96b1cf484?auto=format&fit=crop&w=600&q=80",
+                en: { title: "Quality Sleep (8–10 Hours)", desc: "Get 8–10 hours of uninterrupted sleep every night as recommended by the CDC for teenage brain and body recovery." },
+                uz: { title: "Sifatli Uyqu (8–10 Soat)", desc: "CDC tavsiyasiga muvofiq miya va tana tiklanishi uchun har kecha 8–10 soat to'laqonli uxlang." }
+            },
+            {
+                num: "04",
+                img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80",
+                en: { title: "Reduce Screen Time", desc: "Take regular breaks from phones and computers, and turn off screens at least 1 hour before bedtime." },
+                uz: { title: "Ekran Vaqtini Kamaytirish", desc: "Telefon va kompyuterdan tanaffus qiling hamda uxlashdan 1 soat oldin ekranlarni o'chiring." }
+            },
+            {
+                num: "05",
+                img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80",
+                en: { title: "Stress Management", desc: "Practice deep breathing, mindfulness, and relaxing walks in nature to stay calm during school exams." },
+                uz: { title: "Stressni Boshqarish", desc: "Chuqur nafas mashqlari, xotirjamlik va tabiat qo'ynida sayr qilish orqali o'qish stressini yenging." }
+            },
+            {
+                num: "06",
+                img: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=600&q=80",
+                en: { title: "Regular Daily Movement", desc: "Aim for an average of 60 minutes of enjoyable moderate-to-vigorous daily movement across the week (WHO)." },
+                uz: { title: "Kunlik Doimiy Harakat", desc: "JSST (WHO) tavsiyasiga ko'ra hafta davomida kuniga o'rtacha 60 daqiqa o'zingizga yoqqan faol harakat bilan shug'ullaning." }
+            },
+            {
+                num: "07",
+                img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80",
+                en: { title: "Proper Warm-up & Cool-down", desc: "Perform 5–10 minutes of activity-specific warm-up and stretching to prepare muscles and reduce injury risk." },
+                uz: { title: "To'g'ri Qizish va Sovush", desc: "Jarohat xavfini kamaytirish uchun har mashg'ulotga mos 5–10 daqiqa qizish (warm-up) va cho'zilish tavsiya etiladi." }
+            },
+            {
+                num: "08",
+                img: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=600&q=80",
+                en: { title: "Spend Time Outdoors", desc: "Fresh air and natural sunlight in green parks boost mood, energy, and natural Vitamin D levels." },
+                uz: { title: "Tabiat Qo'ynida Vaqt O'tkazish", desc: "Toza havo va tabiiy quyosh nuri kayfiyatni, quvvatni hamda D vitamini darajasini oshiradi." }
+            },
+            {
+                num: "09",
+                img: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=600&q=80",
+                en: { title: "Stay Motivated with Friends", desc: "Exercise with classmates or family members and track your personal healthy habits together." },
+                uz: { title: "Do'stlar Bilan Motivatsiya", desc: "Sinfdoshlar yoki oila a'zolari bilan birga mashq qiling va shaxsiy sog'lom odatlaringizni kuzatib boring." }
+            },
+            {
+                num: "10",
+                img: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80",
+                en: { title: "Consistency Over Perfection", desc: "Small daily steps lead to sustainable long-term changes—adapt activities to your personal fitness level!" },
+                uz: { title: "Doimiylik — Muvaffaqiyat Kaliti", desc: "Har kuni qilinadigan kichik qadamlar katta va barqaror o'zgarishlarga olib keladi!" }
+            }
+        ];
+
+        const campaignTips = {
+            en: [
+                "1. Start with Just 15 Minutes: Even a short walk in nature beats sitting on the couch—build the habit first!",
+                "2. Pair Music with Movement: Create an energetic playlist exclusively for your workout time.",
+                "3. Track Your Streak Visually: Check off each workout on our 4-week timetable so you never break the chain.",
+                "4. Dress Ready for Action: Lay out your sportswear and shoes the evening before.",
+                "5. Reward Consistency: Celebrate completing each week with a fun outdoor trip with friends."
+            ],
+            uz: [
+                "1. Atigi 15 Daqiqadan Boshlang: Tabiatda qisqa yurish ham divanda o'tirishdan afzal — avval odatni shakllantiring!",
+                "2. Harakatni Musiqa Bilan Birlashtiring: Mashg'ulotlar uchun maxsus energiyaga boy pleylist tuzing.",
+                "3. Zanjirni Uzmang: 4 haftalik jadvalimizda har bir bajarilgan mashqni belgilab boring.",
+                "4. Sport Kiyimini Oldindan Tayyorlang: Krossovka va formangizni kechqurun tayyorlab qo'ying.",
+                "5. O'zingizni Rag'batlantiring: Har bir muvaffaqiyatli haftani do'stlar bilan tabiatda sayr qilib nishonlang."
+            ]
+        };
+
+        const translations = {
+            en: {
+                navSubtitle: "YOUR HEALTH • YOUR POWER • YOUR FUTURE",
+                navStep1: "1. Research",
+                navStep2: "2. 4-Week Plan",
+                navStep3: "3. 10 Advice",
+                navStep4: "4. Campaign",
+                navStep5: "5. Team & Wordwall",
+                heroBadge: "GROUP PROJECT • MAQSETOV, MURATBAEV, SHU'KIRBAEVA, ORALBAEVA",
+                heroTitle: "Healthy Lifestyle — Personal Fitness Programme",
+                heroGoalLabel: "OUR GOAL",
+                heroObjective: "Our goal is to help teenagers live a healthy and happy life. We share simple ways to stay active, eat well, sleep better, and enjoy time in nature. Small daily steps can make a big difference!",
+                heroBtnStart: "Explore All Steps",
+                heroBtnGame: "Open Wordwall",
+                statActivities: "Activity Types",
+                statWeeks: "Weeks Programme",
+                statTips: "Lifestyle Tips",
+                statPoints: "Daily Activity (WHO)",
+                physTitle: "Physical Well-Being",
+                physDesc: "Stronger heart, bones, muscles, posture, and high daily energy.",
+                mentTitle: "Mental Well-Being",
+                mentDesc: "Lower stress, better focus at school, deep sleep, and self-confidence.",
+                groupTitleHeader: "Group Members:",
+                step1Badge: "STEP 1 – RESEARCH",
+                step1Title: "6 Types of Physical Activities for Teenagers",
+                step1Subtitle: "Explore the 6 core physical activity categories with their recommended weekly guidelines, health benefits, safety notes, and equipment needed.",
+                filterAll: "All 6 Categories",
+                lblWeekly: "Recommended Guideline",
+                lblBenefits: "Health Benefits",
+                lblRisks: "Safety & Warm-Up",
+                lblEquip: "Equipment Needed",
+                step2Badge: "STEP 2 – PLAN THE PROGRAMME",
+                step2Title: "Realistic 4-Week Exercise Timetable",
+                step2Subtitle: "Aligned with WHO guidelines (average 60 min/day activity across the week, strength 3+ days/week). Click any day to mark it complete!",
+                progressLabel: "Weekly Goal Progress",
+                warmupTitle: "Recommended Warm-Up (5–10 Minutes Before Every Session)",
+                warmupDesc: "Neck/shoulder rolls, arm circles, hip rotations, dynamic leg swings, and light jogging in place to prepare muscles and reduce injury risk.",
+                cooldownTitle: "Recommended Cool-Down (5–10 Minutes After Every Session)",
+                cooldownDesc: "Slow walking to lower heart rate, static hamstring/quad/calf stretches (hold 20s each), and deep nasal breathing for recovery.",
+                resetCheckboxes: "Reset Checkmarks",
+                thStatus: "Done",
+                thDay: "Day",
+                thActivity: "Activity",
+                thWarmCool: "Warm-Up & Cool-Down",
+                thTime: "Time",
+                thGoal: "Goal",
+                step3Badge: "STEP 3 – HEALTHY LIFESTYLE ADVICE",
+                step3Title: "10 Essential Recommendations for Teenagers",
+                step3Subtitle: "Scientifically accurate advice covering nutrition, hydration, 8–10 hours of sleep (CDC), screen time, stress management, and daily movement.",
+                step4Badge: "STEP 4 – CREATE A FITNESS CAMPAIGN",
+                step4Title: "Teen Fitness Campaign: \"HEALTHY LIFE\"",
+                step4Subtitle: "Complete campaign identity with our HEALTHY LIFE logo poster, slogan, scientific guidelines, 5 motivational tips, and weekly challenge.",
+                sloganLabel: "OUR CAMPAIGN SLOGAN:",
+                sloganText: "“Small Steps. Big Changes.”",
+                sloganSubText: "“Kichik qadamlar. Katta o‘zgarishlar.”",
+                infoStat1: "Recommended average daily physical activity across the week (WHO)",
+                infoStat2: "Weekly muscle and bone strengthening sessions (WHO)",
+                infoStat3: "Recommended nightly sleep for teenagers (CDC)",
+                posterFooter: "Official Campaign Poster & Infographic • Maqsetov, Muratbaev, Shu'kirbaeva & Oralbaeva",
+                fiveTipsTitle: "5 Motivational Tips for Teenagers",
+                challengeBadge: "ONE WEEKLY CHALLENGE",
+                challengeTitle: "7-Day Nature & Active Habit Challenge",
+                challengeDesc: "Choose an activity that fits your personal fitness level each day—walk, cycle, play a team sport, or stretch in a green park for 20–30 minutes without your phone!",
+                challengeBtn: "Accept 7-Day Challenge (Join Our Group!)",
+                challengeJoinedBtn: "Challenge Accepted! (Active Participant)",
+                step5Badge: "STEP 5 – THANK YOU & INTERACTIVE GAME",
+                step5Title: "Thank You for Your Attention!",
+                step5Subtitle: "Meet our project group members and test your knowledge with our interactive Wordwall game.",
+                groupCardSub: "PROJECT GROUP MEMBERS",
+                groupCardTitle: "Our Group Members",
+                thanksMessage: "🇬🇧 Thank You for Your Attention! • 🇺🇿 Diqqatingiz uchun rahmat!",
+                wordwallCardSub: "INTERACTIVE GAME",
+                wordwallCardTitle: "🎮 Open Wordwall Game",
+                wordwallCardDesc: "Click the button below to launch our interactive Healthy Lifestyle Wordwall game in a new browser tab!",
+                openWordwallBtn: "Open Wordwall",
+                wordwallNote: "Opens in a new browser tab (wordwall.net)",
+                footerSub: "Project Work: Healthy Lifestyle (Design Your Personal Fitness Programme)",
+                footerCopy: "Group: Maqsetov Qayrat, Muratbaev Islambek, Shu'kirbaeva Aysanem, Oralbaeva Shaxnoza"
+            },
+            uz: {
+                navSubtitle: "YOUR HEALTH • YOUR POWER • YOUR FUTURE",
+                navStep1: "1. Tadqiqot",
+                navStep2: "2. 4 Haftalik Reja",
+                navStep3: "3. 10 ta Tavsiya",
+                navStep4: "4. Kampaniya",
+                navStep5: "5. Guruh va O'yin",
+                heroBadge: "GURUH ISHI • MAQSETOV, MURATBAEV, SHU'KIRBAEVA, ORALBAEVA",
+                heroTitle: "Sog‘lom Turmush Tarzi — Shaxsiy Fitnes Dasturi",
+                heroGoalLabel: "BIZNING MAQSADIMIZ",
+                heroObjective: "Bizning maqsadimiz — o‘smirlarga sog‘lom va baxtli hayot kechirishga yordam berish. Biz faol bo‘lish, to‘g‘ri ovqatlanish, yaxshiroq uxlash va tabiat qo‘ynida vaqt o‘tkazishning oddiy usullarini ulashamiz. Har kuni qilinadigan kichik qadamlar katta o‘zgarishlarga olib kelishi mumkin!",
+                heroBtnStart: "Barcha Bosqichlarni Ko'rish",
+                heroBtnGame: "Open Wordwall",
+                statActivities: "Faoliyat Turlari",
+                statWeeks: "Haftalik Reja",
+                statTips: "Foydali Tavsiyalar",
+                statPoints: "Kunlik Harakat (WHO)",
+                physTitle: "Jismoniy Salomatlik",
+                physDesc: "Kuchli yurak, suyaklar, mushaklar, to'g'ri qomat va yuqori kunlik quvvat.",
+                mentTitle: "Ruhiy Salomatlik",
+                mentDesc: "Stressning kamayishi, darslarda yuqori diqqat, tinch uyqu va o'ziga ishonch.",
+                groupTitleHeader: "Guruh A'zolari:",
+                step1Badge: "1-BOSQICH – TADQIQOT (RESEARCH)",
+                step1Title: "O‘smirlar Uchun Jismoniy Faollikning 6 Turi",
+                step1Subtitle: "Har bir jismoniy faoliyat turi bo'yicha tavsiya etilgan me'yor, salomatlikka foydasi, 5–10 daqiqalik qizish qoidasi va kerakli jihozlar.",
+                filterAll: "Barcha 6 Yo'nalish",
+                lblWeekly: "Tavsiya Etilgan Me'yor",
+                lblBenefits: "Salomatlikka Foydasi",
+                lblRisks: "Xavfsizlik va Qizish (5–10 daq)",
+                lblEquip: "Kerakli Jihozlar",
+                step2Badge: "2-BOSQICH – 4 HAFTALIK DASTUR REJASI",
+                step2Title: "Realistik 4 Haftalik Mashqlar Jadvali",
+                step2Subtitle: "JSST (WHO) tavsiyalariga mos (hafta davomida kuniga o'rtacha 60 daqiqa faollik, haftada kamida 3 kun kuch mashqlari). Bajarilgan kunni bosing!",
+                progressLabel: "Haftalik Reja Bajarilishi",
+                warmupTitle: "Tavsiya Etilgan Qizish – Warm-Up (5–10 Daqiqa)",
+                warmupDesc: "Mashg'ulotdan oldin 5–10 daqiqa bo'yin, yelka, qo'l-oyoq chigalyozdi mashqlari va yengil yugurish jarohat xavfini kamaytiradi.",
+                cooldownTitle: "Tavsiya Etilgan Sovush – Cool-Down (5–10 Daqiqa)",
+                cooldownDesc: "Mashg'ulotdan keyin 5–10 daqiqa sekin yurish, mushaklarni cho'zish (stretching) va chuqur nafas mashqlari tavsiya etiladi.",
+                resetCheckboxes: "Belgilarni Tiklash",
+                thStatus: "Bajarildi",
+                thDay: "Kun",
+                thActivity: "Mashg‘ulot",
+                thWarmCool: "Qizish va Sovush (5–10 daq)",
+                thTime: "Vaqt",
+                thGoal: "Maqsad",
+                step3Badge: "3-BOSQICH – SOG‘LOM TURMUSH TARZI TAVSIYALARI",
+                step3Title: "O‘smirlar Uchun 10 ta Ilmiy Asoslangan Tavsiya",
+                step3Subtitle: "To'g'ri ovqatlanish, suv ichish odati, 8–10 soatlik uyqu (CDC), ekran vaqtini kamaytirish, stressni boshqarish va doimiy harakat bo'yicha tavsiyalar.",
+                step4Badge: "4-BOSQICH – FITNES KAMPANIYASI",
+                step4Title: "Fitnes Kampaniyasi: \"HEALTHY LIFE\"",
+                step4Subtitle: "HEALTHY LIFE logotipi, shiorimiz, ilmiy ko'rsatkichlar, 5 ta motivatsion maslahat va 7 kunlik haftalik chorlov!",
+                sloganLabel: "BIZNING SHIORIMIZ:",
+                sloganText: "“Small Steps. Big Changes.”",
+                sloganSubText: "“Kichik qadamlar. Katta o‘zgarishlar.”",
+                infoStat1: "Hafta davomida kunlik o'rtacha jismoniy faollik (WHO)",
+                infoStat2: "Haftalik mushak va suyakni mustahkamlash mashqlari (WHO)",
+                infoStat3: "O'smirlar uchun tavsiya etilgan tungi uyqu (CDC)",
+                posterFooter: "Rasmiy Kampaniya Posteri va Infografikasi • Maqsetov, Muratbaev, Shu'kirbaeva va Oralbaeva",
+                fiveTipsTitle: "O'smirlar Uchun 5 ta Motivatsion Maslahat",
+                challengeBadge: "HAFTALIK CHORLOV (WEEKLY CHALLENGE)",
+                challengeTitle: "7 Kunlik Tabiat va Faol Odat Chorlovi",
+                challengeDesc: "Har kuni o'z imkoniyatingizga mos harakat tanlang — piyoda yoki velosipedda yuring, jamoaviy sport o'ynang va bog'da 20–30 daqiqa telefonsiz mashq qiling!",
+                challengeBtn: "7 Kunlik Chorlovga Qo'shilish!",
+                challengeJoinedBtn: "Chorlov Qabul Qilindi! (Faol Ishtirokchi)",
+                step5Badge: "5-BOSQICH – DIQQATINGIZ UCHUN RAHMAT! VA O‘YIN",
+                step5Title: "Diqqatingiz uchun rahmat!",
+                step5Subtitle: "Loyiha guruhimiz a'zolari va Wordwall interaktiv o'yiniga to'g'ridan-to'g'ri o'tish bo'limi.",
+                groupCardSub: "LOYIHA GURUHI A'ZOLARI",
+                groupCardTitle: "Guruhimiz A'zolari",
+                thanksMessage: "🇺🇿 Diqqatingiz uchun rahmat! • 🇬🇧 Thank You for Your Attention!",
+                wordwallCardSub: "INTERAKTIV O'YIN",
+                wordwallCardTitle: "🎮 Open Wordwall Game",
+                wordwallCardDesc: "Quyidagi tugmani bosgan vaqtingizda yangi betda Wordwall interaktiv o'yinimiz ochiladi va undan bevosita foydalanishingiz mumkin!",
+                openWordwallBtn: "Open Wordwall",
+                wordwallNote: "Bosilganda yangi betga o'tib ketadi (wordwall.net)",
+                footerSub: "Project Work: Healthy Lifestyle (Design Your Personal Fitness Programme)",
+                footerCopy: "Guruhimiz: Maqsetov Qayrat, Muratbaev Islambek, Shu'kirbaeva Aysanem, Oralbaeva Shaxnoza"
+            }
+        };
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+
+            const btnUz = document.getElementById('btn-uz');
+            const btnEn = document.getElementById('btn-en');
+            if (lang === 'uz') {
+                btnUz.className = "flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-extrabold bg-nature-600 text-white shadow-sm transition-all";
+                btnEn.className = "flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-900 transition-all";
+            } else {
+                btnEn.className = "flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-extrabold bg-nature-600 text-white shadow-sm transition-all";
+                btnUz.className = "flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-900 transition-all";
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            renderResearchFilters();
+            renderResearchGrid();
+            renderWeekTabs();
+            renderTimetable();
+            renderAdviceGrid();
+            renderCampaignTips();
+            lucide.createIcons();
+        }
+
+        function renderResearchFilters() {
+            const container = document.getElementById('research-filters');
+            const cats = [
+                { id: 'all', label: translations[currentLang].filterAll },
+                ...researchActivities.map(a => ({
+                    id: a.id,
+                    label: a[currentLang].title.replace(/^[0-9]+\.\s*/, '')
+                }))
+            ];
+            container.innerHTML = cats.map(c => `
+                <button onclick="filterResearch('${c.id}')" 
+                        class="px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition ${currentCategory === c.id ? 'bg-nature-600 text-white shadow-md shadow-nature-600/25' : 'bg-white text-slate-700 hover:bg-nature-50 border border-slate-200'}">
+                    ${c.label}
+                </button>
+            `).join('');
+        }
+
+        function filterResearch(catId) {
+            currentCategory = catId;
+            renderResearchFilters();
+            renderResearchGrid();
+            lucide.createIcons();
+        }
+
+        function renderResearchGrid() {
+            const grid = document.getElementById('research-grid');
+            const t = translations[currentLang];
+            const filtered = currentCategory === 'all'
+                ? researchActivities
+                : researchActivities.filter(a => a.id === currentCategory);
+
+            grid.innerHTML = filtered.map(item => {
+                const d = item[currentLang];
+                return `
+                <article class="bg-white rounded-3xl overflow-hidden shadow-lg border border-emerald-100 flex flex-col card-hover group">
+                    <div class="relative h-56 overflow-hidden bg-slate-100">
+                        <img src="${item.img}" 
+                             alt="${d.title}" 
+                             onerror="handleLogoFallback(this)"
+                             class="w-full h-full object-cover img-zoom">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-3 left-4 right-4 text-white">
+                            <h3 class="font-display font-extrabold text-xl leading-tight">${d.title}</h3>
+                            <p class="text-xs text-emerald-200 font-medium mt-0.5">${d.sub}</p>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4 flex-1 flex flex-col justify-between text-sm">
+                        <div class="space-y-3">
+                            <div class="p-3 rounded-2xl bg-nature-50 border border-nature-100">
+                                <span class="text-xs font-extrabold uppercase text-nature-800 flex items-center gap-1.5 mb-1">
+                                    <i data-lucide="clock" class="w-3.5 h-3.5"></i> ${t.lblWeekly}
+                                </span>
+                                <p class="text-slate-800 font-semibold">${d.weekly}</p>
+                            </div>
+                            <div class="p-3 rounded-2xl bg-emerald-50/60 border border-emerald-100">
+                                <span class="text-xs font-extrabold uppercase text-emerald-800 flex items-center gap-1.5 mb-1">
+                                    <i data-lucide="heart" class="w-3.5 h-3.5"></i> ${t.lblBenefits}
+                                </span>
+                                <p class="text-slate-700 leading-relaxed">${d.benefits}</p>
+                            </div>
+                            <div class="p-3 rounded-2xl bg-rose-50 border border-rose-100">
+                                <span class="text-xs font-extrabold uppercase text-rose-800 flex items-center gap-1.5 mb-1">
+                                    <i data-lucide="alert-triangle" class="w-3.5 h-3.5"></i> ${t.lblRisks}
+                                </span>
+                                <p class="text-slate-700 leading-relaxed">${d.risks}</p>
+                            </div>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 flex items-start gap-2 text-xs text-slate-600">
+                            <i data-lucide="dumbbell" class="w-4 h-4 text-nature-600 shrink-0 mt-0.5"></i>
+                            <div><strong class="text-slate-900">${t.lblEquip}:</strong> ${d.equip}</div>
+                        </div>
+                    </div>
+                </article>
+                `;
+            }).join('');
+        }
+
+        function renderWeekTabs() {
+            const container = document.getElementById('week-tabs');
+            container.innerHTML = [1, 2, 3, 4].map(w => {
+                const plan = weeklyPlans[w];
+                const title = currentLang === 'uz' ? plan.titleUz : plan.titleEn;
+                const active = currentWeek === w;
+                return `
+                <button onclick="selectWeek(${w})" 
+                        class="p-4 rounded-2xl text-left transition border ${active ? 'bg-nature-500 text-slate-950 border-nature-300 shadow-lg shadow-nature-500/20 font-extrabold' : 'bg-white/10 text-white border-white/15 hover:bg-white/15'}">
+                    <span class="text-xs uppercase tracking-wider block opacity-80">${currentLang === 'uz' ? w + '-HAFTA' : 'WEEK ' + w}</span>
+                    <span class="font-display font-bold text-sm sm:text-base line-clamp-1 mt-0.5">${title.split(': ')[1]}</span>
+                </button>
+                `;
+            }).join('');
+        }
+
+        function selectWeek(w) {
+            currentWeek = w;
+            renderWeekTabs();
+            renderTimetable();
+            lucide.createIcons();
+        }
+
+        function toggleDayComplete(dayIndex) {
+            const arr = completedDays[currentWeek];
+            const idx = arr.indexOf(dayIndex);
+            if (idx > -1) {
+                arr.splice(idx, 1);
+            } else {
+                arr.push(dayIndex);
+            }
+            renderTimetable();
+            lucide.createIcons();
+        }
+
+        function resetWeekCheckboxes() {
+            completedDays[currentWeek] = [];
+            renderTimetable();
+            lucide.createIcons();
+        }
+
+        function renderTimetable() {
+            const plan = weeklyPlans[currentWeek];
+            document.getElementById('current-week-badge').textContent = currentLang === 'uz' ? `${currentWeek}-HAFTA JADVALI` : `WEEK ${currentWeek} SCHEDULE`;
+            document.getElementById('current-week-heading').textContent = currentLang === 'uz' ? plan.titleUz : plan.titleEn;
+
+            const doneList = completedDays[currentWeek];
+            const pct = Math.round((doneList.length / 7) * 100);
+            document.getElementById('week-progress-bar').style.width = `${pct}%`;
+            document.getElementById('week-progress-text').textContent = currentLang === 'uz'
+                ? `${doneList.length} / 7 Kun (${pct}%)`
+                : `${doneList.length} / 7 Days (${pct}%)`;
+
+            const tbody = document.getElementById('timetable-body');
+            tbody.innerHTML = plan.days.map((d, i) => {
+                const isDone = doneList.includes(i);
+                const day = currentLang === 'uz' ? d.dayUz : d.dayEn;
+                const act = currentLang === 'uz' ? d.actUz : d.actEn;
+                const time = currentLang === 'uz' ? d.timeUz : d.timeEn;
+                const wc = currentLang === 'uz' ? d.wcUz : d.wcEn;
+                const goal = currentLang === 'uz' ? d.goalUz : d.goalEn;
+
+                return `
+                <tr onclick="toggleDayComplete(${i})" class="cursor-pointer transition ${isDone ? 'bg-nature-50/90' : 'hover:bg-slate-50'}">
+                    <td class="py-4 px-5">
+                        <div class="w-6 h-6 rounded-lg flex items-center justify-center border transition ${isDone ? 'bg-nature-600 border-nature-600 text-white' : 'border-slate-300 bg-white'}">
+                            ${isDone ? '<i data-lucide="check" class="w-4 h-4"></i>' : ''}
+                        </div>
+                    </td>
+                    <td class="py-4 px-5 font-display font-bold text-slate-900 whitespace-nowrap">${day}</td>
+                    <td class="py-4 px-5">
+                        <div class="flex items-center gap-3">
+                            <img src="${d.img}" alt="${act}" 
+                                 onerror="handleLogoFallback(this)"
+                                 class="w-12 h-12 rounded-xl object-cover shrink-0 border border-emerald-200">
+                            <span class="font-semibold ${isDone ? 'line-through text-slate-400' : 'text-slate-800'}">${act}</span>
+                        </div>
+                    </td>
+                    <td class="py-4 px-5 text-slate-600 text-xs sm:text-sm">${wc}</td>
+                    <td class="py-4 px-5 whitespace-nowrap">
+                        <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-800">${time}</span>
+                    </td>
+                    <td class="py-4 px-5 font-semibold text-nature-700">${goal}</td>
+                </tr>
+                `;
+            }).join('');
+        }
+
+        function renderAdviceGrid() {
+            const grid = document.getElementById('advice-grid');
+            grid.innerHTML = lifestyleAdvice.map(item => {
+                const d = item[currentLang];
+                return `
+                <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-slate-200/80 flex flex-col card-hover group">
+                    <div class="relative h-40 overflow-hidden bg-slate-100">
+                        <img src="${item.img}" alt="${d.title}" 
+                             onerror="handleLogoFallback(this)"
+                             class="w-full h-full object-cover img-zoom">
+                        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-xl bg-slate-950/80 backdrop-blur-sm text-nature-400 font-display font-black text-xs">
+                            #${item.num}
+                        </span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-display font-bold text-slate-900 text-base mb-2 leading-snug">${d.title}</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">${d.desc}</p>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function renderCampaignTips() {
+            const list = document.getElementById('campaign-tips-list');
+            list.innerHTML = campaignTips[currentLang].map(tip => `
+                <li class="flex items-start gap-2.5 p-3 rounded-2xl bg-slate-50 border border-slate-200/70">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-nature-600 shrink-0 mt-0.5"></i>
+                    <span class="font-medium">${tip}</span>
+                </li>
+            `).join('');
+
+            const btnText = document.getElementById('challenge-btn-text');
+            if (challengeJoined) {
+                btnText.textContent = translations[currentLang].challengeJoinedBtn;
+            } else {
+                btnText.textContent = translations[currentLang].challengeBtn;
+            }
+        }
+
+        function joinChallenge() {
+            challengeJoined = !challengeJoined;
+            renderCampaignTips();
+            lucide.createIcons();
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        window.onload = function () {
+            setLanguage('uz');
+        };
+    </script>
+</body>
+</html>
